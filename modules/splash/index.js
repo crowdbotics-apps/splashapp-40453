@@ -11,10 +11,6 @@ const Splash = ({
   const options = useContext(OptionsContext);
 
   const handleDurationEnd = () => {
-    setTimeout(() => {
-      options.hide();
-    }, 5000);
-
     if (onDurationEnd) {
       onDurationEnd();
     }
@@ -25,13 +21,9 @@ const Splash = ({
   };
 
   useEffect(() => {
-    if (duration || options.duration) {
-      setTimeout(() => {
-        handleDurationEnd();
-      }, duration || options.duration);
-    } else {
-      handleDurationEnd();
-    }
+    setTimeout(() => {
+      options.hide();
+    }, 5000);
   }, []);
   return <View style={_styles.kthJlEvn}></View>;
 };
