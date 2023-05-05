@@ -11,6 +11,8 @@ const Splash = ({
   const options = useContext(OptionsContext);
 
   const handleDurationEnd = () => {
+    options.hide();
+
     if (onDurationEnd) {
       onDurationEnd();
     }
@@ -21,11 +23,16 @@ const Splash = ({
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      options.hide();
-    }, 5000);
+    if (5000) {
+      setTimeout(() => {
+        handleDurationEnd();
+      }, 500);
+    } else {
+      handleDurationEnd();
+    }
   }, []);
-  return <View style={_styles.kthJlEvn}></View>;
+  return <View style={_styles.nZxKgExR}>
+    </View>;
 };
 
 Splash.propTypes = {
@@ -39,6 +46,11 @@ export default {
 
 const _styles = StyleSheet.create({
   kthJlEvn: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "red"
+  },
+  nZxKgExR: {
     width: "100%",
     height: "100%",
     backgroundColor: "red"
