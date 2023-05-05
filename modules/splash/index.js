@@ -1,36 +1,31 @@
-import React, { useEffect, useContext } from "react";
+import { StyleSheet } from "react-native";
+import React, { useEffect } from "react";
 import { View } from "react-native";
 import PropTypes from "prop-types";
-import { OptionsContext } from "@options";
+import SplashScreen from "react-native-splash-screen";
 
 const Splash = ({
   duration,
   onDurationEnd
 }) => {
-  const options = useContext(OptionsContext);
-
   const handleDurationEnd = () => {
-    options.hide();
+    SplashScreen.hide();
 
     if (onDurationEnd) {
       onDurationEnd();
     }
-
-    if (options.onDurationEnd) {
-      options.onDurationEnd();
-    }
   };
 
   useEffect(() => {
-    if (duration || options.duration) {
+    if (duration || 5000) {
       setTimeout(() => {
         handleDurationEnd();
-      }, duration || options.duration);
+      }, duration || 5000);
     } else {
       handleDurationEnd();
     }
   }, []);
-  return <View></View>;
+  return <View style={_styles.skPMOkMc}></View>;
 };
 
 Splash.propTypes = {
@@ -41,3 +36,11 @@ export default {
   title: "Splash",
   navigator: Splash
 };
+
+const _styles = StyleSheet.create({
+  skPMOkMc: {
+    width: "100%",
+    height: "100%",
+    background: "blue"
+  }
+});
