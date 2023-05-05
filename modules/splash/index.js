@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native";
 import React, { useEffect, useContext } from "react";
 import { View } from "react-native";
 import PropTypes from "prop-types";
@@ -23,16 +22,15 @@ const Splash = ({
   };
 
   useEffect(() => {
-    if (5000) {
+    if (duration || options.duration) {
       setTimeout(() => {
         handleDurationEnd();
-      }, 500);
+      }, duration || options.duration);
     } else {
       handleDurationEnd();
     }
   }, []);
-  return <View style={_styles.nZxKgExR}>
-    </View>;
+  return <View></View>;
 };
 
 Splash.propTypes = {
@@ -43,16 +41,3 @@ export default {
   title: "Splash",
   navigator: Splash
 };
-
-const _styles = StyleSheet.create({
-  kthJlEvn: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: "red"
-  },
-  nZxKgExR: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: "red"
-  }
-});
